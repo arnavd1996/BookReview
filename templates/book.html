@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Book Review
+{% endblock %}
+
+{% block body %}
+	<h1>Come Join the Book Revolution</h1>
+
+<ul>
+	Your Search Results:
+
+	<li>ISBN No.: {{details.isbn}}</li>
+	<li>Book Name: {{details.title}}</li>
+	<li>Author: {{details.author}}</li>
+	<li>Publication Year: {{details.year}}</li>
+</ul>
+
+<p>Give your review of the book too plej. Thenks.<p>
+<h3>Give Rating for the book<h3>
+
+<form action="{{ url_for('addreview') }}" method="post">
+
+	<div class="form-group">
+		
+		<select class="form-control" name="rating">
+                
+                {% for rating in range(5) %}
+                    <option value = {{rating+1}}> {{rating+1}} </option>
+                {% endfor %}
+        
+        </select>
+	
+	</div>
+
+
+		<div class="form-group">
+			<input class="form-control" name="review" placeholder="Review">
+		</div>
+
+
+		<div class="form-group">
+			<button class="btn btn-primary">Submit Review</button>
+		</div>
+
+</form>
+
+ 
+
+{% endblock %}
